@@ -34,7 +34,7 @@ ex : Part #03
 
 Default option is "3", using Roman numbers.
 To change this replace the number "3" by one of the 3 other options here in the code here:
-> $Selected_Chapter_Names = "3"
+``` $Selected_Chapter_Names = "3" ```
 
 Of course you can enter your own chapter name by typing it in the input box, this is just fancy pre-filled options for the lazy ones like me :p 
 
