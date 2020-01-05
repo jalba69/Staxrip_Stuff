@@ -48,6 +48,7 @@ That's it, the chapter file is created inside the Temp folder used by Staxrip, i
 (Using this filename to not mess with a potential already existing chapter file being demuxed when adding a video into Staxrip)
 
 Now you will just need to click on Container Options >  Options tab > browse to the chapters file path to add the chapters to your Mkv's or Mp4's :
+
 ![pic](https://i.imgur.com/xyxih12.png)
 
 
