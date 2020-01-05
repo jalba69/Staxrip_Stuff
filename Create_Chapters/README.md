@@ -33,7 +33,7 @@ ex : Chapter VII
 ex : Part #03  
 
 Default option is "3", using Roman numbers.
-To change this replace the number "3" by one of the 3 other options here in the code here:
+To change this replace the number "3" by one of the 3 other options here in the code :
 ```
 $Selected_Chapter_Names = "3"
 ```
