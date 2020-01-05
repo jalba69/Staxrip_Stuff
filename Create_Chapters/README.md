@@ -52,6 +52,6 @@ Now you will just need to click on Container Options >  Options tab > browse to 
 ![pic](https://i.imgur.com/xyxih12.png)
 
 
->Sadly custom muxer profiles do not allow the use of macros for paths so it ain't possible to create a template using a custom container set with a macro like "%working_dir%Custom_Chapters.txt" for the chapter path skipping the manual selection of our custom chapters file fully automated, for now it needs to be picked up manually each but that will do ;)
+>Sadly custom muxer profiles do not allow the use of macros for paths so it ain't possible to create a template using a custom container set with a macro like "%working_dir%Custom_Chapters.txt" for the chapter path skipping the manual selection of our custom chapters file and rendring the process fully automated when selecting a template using the cutom muxer, for now the chapter file created needs to be picked up manually each time but that will do I hope ;)
 
 Enjoy :)
