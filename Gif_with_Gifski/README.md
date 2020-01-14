@@ -77,7 +77,7 @@ Seems complicated when we read it but no worries it's not, see in video  :
 [<img src="https://i.imgur.com/ASAPzUA.gif" width="60%">](https://streamable.com/d47u3)
 >(click the animated preview image to watch the video)
 
-- And this is the result from this quick example : 
+- And this is the result from this quick video example : 
 
 [<img src="https://i.imgur.com/UNDsjgz.gif" width="40%">](https://i.imgur.com/UNDsjgz.gif)
 
