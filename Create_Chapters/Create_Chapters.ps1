@@ -1,13 +1,21 @@
-#Settings for chapters default name, user can of course manually insert chapters names too, this parameter is used only as a pre-filled option.
-################################################################################################                            
-# There is 4 options possible :                                                                #
-#  1 - Use TimeStamps as chapter name                      ex : 00:14:47.762                   #
-#  2 - Use Numbers for Chapter name                        ex : Chapter #07                    #
-#  3 - Use Roman Numbers for Chapters name   (Default)     ex : Chapter VII                    #
-#  4 - Use Numbers + Part for Chapters names               ex : Part #03                       #
-################################################################################################                     
-$Selected_Chapter_Names = "3"    # Change the number here according to your tastes             #
-################################################################################################
+##############################################################################################################
+###########################        Create_Chapters.ps1 By Jalba69                  ###########################
+###########################      https://github.com/jalba69/Staxrip_Stuff          ###########################
+#                                               version 1.0                                                  #
+#            A simple Powershell script to create chapters from the preview window in StaxRip                #
+#                                                                                                            #
+############################################## Settings ######################################################
+# Settings for chapters default name, user can of course manually insert chapters names too,                 #
+# this parameter is used only as a pre-filled option.                                                        #
+#                                                                                                            #
+# There is 4 options possible :                                                                              #
+#  1 - Use TimeStamps as chapter name                      ex : 00:14:47.762                                 #
+#  2 - Use Numbers for Chapter name                        ex : Chapter #07                                  #
+#  3 - Use Roman Numbers for Chapters name   (Default)     ex : Chapter VII                                  #
+#  4 - Use Numbers + Part for Chapters names               ex : Part #03                                     #
+##############################################################################################################
+$Selected_Chapter_Names = "3"    # Change the number here according to your tastes                           #
+##############################################################################################################
 
 $s = [ShortcutModule]::s
 $p = [ShortcutModule]::p
