@@ -347,6 +347,7 @@ $FFmpeg_bitmap.EndInit()
 $FFmpeg_bitmap.Freeze()
 $FFmpeg_Picture = [System.Drawing.bitmap][System.Drawing.Image]::FromStream($FFmpeg_bitmap.StreamSource)
 $FFmpeg_Icon = [System.Drawing.Icon]::FromHandle($FFmpeg_Picture.GetHicon())
+
 #Gifski Icon taken from here : https://gif.ski/
 $Gifski_icon_base64 = "AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAABMcEcATHBHAExwRwCaLrhMkzSTqpo5mduZOJbzkTpu/ps/
