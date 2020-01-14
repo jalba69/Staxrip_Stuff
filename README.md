@@ -1,5 +1,5 @@
 # Staxrip_Stuff
-Some scripts and stuff for Staxrip.
+Some scripts and stuff for Staxrip :
 
 ---
    - ## [Create_Chapters](https://github.com/jalba69/Staxrip_Stuff/tree/master/Create_Chapters)
