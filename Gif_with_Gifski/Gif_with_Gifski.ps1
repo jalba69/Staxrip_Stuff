@@ -44,7 +44,6 @@ $File_output_name = "Anim_$($Shorter_name)_$($Timestamp).gif"
 #Auto Set Paths 
 $Project_Temp_Folder = $activeProject.TempDir
 $StaxRip_script_path = $activeProject.Script.Path
-$Staxrip_Path = [Application]::StartupPath
 $FFmpeg_path = [Package]::FFmpeg.GetDir() + "ffmpeg.exe" 
 
 #Get Video Output Width & Height
