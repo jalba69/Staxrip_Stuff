@@ -1,5 +1,5 @@
 # Gif_with_Gifski.ps1
-A Powershell script to use inside [StaxRip](https://github.com/staxrip/staxrip) to create high quality gif's with [Gifski](https://github.com/ImageOptim/gifski)
+A Powershell script to use inside [StaxRip](https://github.com/staxrip/staxrip) for creating high quality gif's with [Gifski](https://github.com/ImageOptim/gifski)
 
 * _Only tested while using avisynth inside Staxrip, really not sure if it will work with VapourSynth, not installed on my system, if it works let me know ;)_
 
