@@ -9,7 +9,7 @@ Some scripts and stuff for Staxrip.
 ---
 - ## [Gif_with_Gifski](https://github.com/jalba69/Staxrip_Stuff/tree/master/Gif_with_Gifski)
 
-A Powershell script to use inside [StaxRip](https://github.com/staxrip/staxrip) to create high quality gif's with [Gifski](https://github.com/ImageOptim/gifski)
+A Powershell script to use inside [StaxRip](https://github.com/staxrip/staxrip) for creating high quality gif's with [Gifski](https://github.com/ImageOptim/gifski)
 
 ---
 <br/>
