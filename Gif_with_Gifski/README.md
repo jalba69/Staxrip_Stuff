@@ -79,7 +79,6 @@ Seems complicated when we read it but no worries it's not, see in video  :
 
 - And this is the result from this quick example : 
 
-<img src="https://i.imgur.com/UNDsjgz.gif" width="100%">
-
+[<img src="https://i.imgur.com/UNDsjgz.gif" width="40%">](https://i.imgur.com/UNDsjgz.gif)
 
 Enjoy :)
