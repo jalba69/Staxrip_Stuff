@@ -449,8 +449,7 @@ $Gifski_Icon = [System.Drawing.Icon]::FromHandle($Gifski_Picture.GetHicon())
 #Extract Frames to png's with FFmpeg
    #Create "Gif_Frames" Folder in project temp directory.
     #Creating new folder for extracted frames each time in case of trim options changed in Staxrip after 1st gif creation/try. 
-    #Could easily add a delete option but won't mess with deleting files on someone else computer, who knows what can happen with weird input names of videos...
-#$Stamp = $((get-date).ToString("hh_mm_ss"))	
+    #Could easily add a delete option but won't mess with deleting files on someone else computer, who knows what can happen with weird input names of videos...	
 $Gif_Frames_Folder = ("Gif_Frames_" + $((get-date).ToString("hh_mm_ss")))
 New-Item -Path $Project_Temp_Folder -name $Gif_Frames_Folder -ItemType "directory"
    #Notifier Params
