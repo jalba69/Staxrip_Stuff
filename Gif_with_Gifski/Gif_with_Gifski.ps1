@@ -2,7 +2,7 @@
 ###########################        Gif_with_Gifski.ps1 By Jalba69                  ###########################
 ###########################      https://github.com/jalba69/Staxrip_Stuff          ###########################   
 #                                               version 1.0                                                  #
-# A Powershell script to use inside StaxRip to create high quality gif's with Gifski.Only tested while using # 
+# A Powershell script to use inside StaxRip to create high quality gif's with Gifski. Only tested while using# 
 # avisynth inside Staxrip, really not sure if it will work with VapourSynth, not installed on my system...   #
 #                                                                                                            #
 ############################################## Settings ######################################################
