@@ -475,7 +475,6 @@ $balloon.ShowBalloonTip(9000)
    #Gifski process
 $Output_Gif_Full = "`"$Gif_Output_Folder$File_output_name`""
 $Stored_Frames_Path = "`"$($Project_Temp_Folder + $Gif_Frames_Folder)\frame""*"".png`""
-
 Start-Process "$Gifski_path" "-o $Output_Gif_Full $Fps_setting $Quality_setting_Main $Resize_setting_Main $Stored_Frames_Path" -WindowStyle Minimized
    #Wait for Gifski to end
 Wait-Process "Gifski"
@@ -490,7 +489,7 @@ $balloon.BalloonTipTitle = "StaxRip"
 $balloon.Visible = $true
 $balloon.ShowBalloonTip(3000)
 Sleep -m 500
-    #If Option is Set to True then Open destination folder and select the created file once gif is created.
+    #If Option is Set to True then Open destination folder with the created file once gif is created.
 If ($Open_Folder_After_Creation -eq "True") {
 Invoke-Expression "explorer /select,$Output_Gif_Full" }
    #Notifier out
