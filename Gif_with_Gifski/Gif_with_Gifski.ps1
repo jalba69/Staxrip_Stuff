@@ -174,7 +174,7 @@ $Aspect_Ratio = ([math]::Round(([int]$Call_Width_Input / ([int]$Target_Width / [
 $Gif_Height="--height $Aspect_Ratio"}
 #if ([int]$Call_Height_Input -eq "0") {$Gif_Height=""}	# Do not send calculated Height parameter and let Gifski decide itself based on his A/R calculations
 $Resize_values = "$Gif_Width $Gif_Height"
-   #Is set resize values for W&H are the same as input don't pass resize args to Gifski.
+   #If set resize values for W&H are the same as input don't pass resize args to Gifski.
 if ([int]$Call_Width_Input -eq [int]$Target_Width -And [int]$Call_Height_Input -eq [int]$Target_Height) {$Resize_values=""}
 return $Resize_values,$Call_Width_Input,$Call_Height_Input
 }
