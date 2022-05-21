@@ -1,7 +1,7 @@
 ##############################################################################################################
 ###########################        Create_Chapters.ps1 By Jalba69                  ###########################
 ###########################      https://github.com/jalba69/Staxrip_Stuff          ###########################
-#                                               version 1.0                                                  #
+#                                        version 1.1   May 2022                                              #
 #            A simple Powershell script to create chapters from the preview window in StaxRip                #
 #                                                                                                            #
 ############################################## Settings ######################################################
@@ -88,7 +88,7 @@ $Next_Chapter_Name =  "Part #$Next_Chapter_Number" }
 else { $Next_Chapter_Name = "Chapter $(ConvertToRoman $Next_Chapter_Number)" }
 
 #Set Chapter Name Text Input Box
-$Set_Chapter_Name = [InputBox]::Show("Time : $Chapter_Time_Code `nEnter the Chapter Name : ", "Select a Chapter Name", "$Next_Chapter_Name")
+$Set_Chapter_Name = [InputBox]::Show("Enter the Chapter Name`n`n Time : $Chapter_Time_Code", "$Next_Chapter_Name", "Select a Chapter Name :")
 if ([string]::IsNullOrEmpty($Set_Chapter_Name)) { exit }
 
 #Output to chapter .txt file 
