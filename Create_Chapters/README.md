@@ -41,8 +41,11 @@ $Selected_Chapter_Names = "3"
 Of course you can enter your own chapter name by typing it in the input box, this is just fancy pre-filled options for the lazy ones like me :p 
 
 ## Usage Demo :
-[<img src="https://i.imgur.com/Pe7VCOJ.gif" width="60%">](https://streamable.com/934oj)
->(click the animated preview image to watch the video)
+
+
+https://user-images.githubusercontent.com/15131985/176945331-58ea5a41-ef31-4ce4-8bbe-b2702841fc16.mp4
+
+
 
 That's it, the chapter file is created inside the Temp folder used by Staxrip, it is named **Custom_Chapters.txt**
 (Using this filename to not mess with a potential already existing chapter file being demuxed when adding a video into Staxrip)
