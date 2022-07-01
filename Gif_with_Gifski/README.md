@@ -10,7 +10,7 @@ A Powershell script to use inside [StaxRip](https://github.com/staxrip/staxrip) 
 - Click the little icon at the top left of the edit menu window to create a new menu entry there.
 - Set a name like " _Gif for Gifski_ " or whatever you want.
 - Set an icon ( if you want, it's just a fancy visual help in menus )
-- In the command parameter select : **ExecutePowershellScript**
+- In the command parameter select : **ExecutePowershellCode**
 - Below this click on the right side of the "Script Code" box, a little button will appear, click on it and in the edit window paste the content from the **Gif_with_Gifski.ps1** file.
 
 
@@ -20,7 +20,7 @@ https://user-images.githubusercontent.com/15131985/176942739-cd7471d7-2ce8-44f4-
 
 
 
-There is another way to do this, mostly the same but instead of selecting the command parameter **ExecutePowershellScript** select **ExecuteScriptFile** and then on the next step you set the path to the **Gif_with_Gifski.ps1** file stored on your computer.
+There is another way to do this, mostly the same but instead of selecting the command parameter **ExecutePowershellCode** select **ExecutePowershellFile** and then on the next step you set the path to the **Gif_with_Gifski.ps1** file stored on your computer.
 
 ## Settings :
 At the top of the **Gif_with_Gifski.ps1** there is a few things to set ( instructions are also in the script ) : 
