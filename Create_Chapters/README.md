@@ -3,7 +3,7 @@ A simple Powershell script to create chapters from the preview window in [StaxRi
 
 ## **Installation :**
 
-- Open any content in Staxrip so you can trigger the preview mode (or click "preview" it will ask you to open a video anyways).
+- Open any content in Staxrip and click "preview".
 - Once the preview mode window is opened then : right click > Edit Menu.
 - Click on the first icon at the top left to create a new entry in the menu list.
 - Set the name for this new menu entry, like "Create Chapters" or whatever you want.
