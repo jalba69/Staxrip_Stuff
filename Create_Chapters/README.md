@@ -8,14 +8,14 @@ A simple Powershell script to create chapters from the preview window in [StaxRi
 - Click on the first icon at the top left to create a new entry in the menu list.
 - Set the name for this new menu entry, like "Create Chapters" or whatever you want.
 - Set an icon ( if you want ).
-- In the command parameter select : **ExecutePowershellScript**
+- In the command parameter select : **ExecutePowershellCode**
 - Below this click on the right side of the "Script Code" box, a little button will appear, click on it and in the edit window paste the content from the **Create_Chapters.ps1** file.
 
 ### Video shows it better :   
 https://user-images.githubusercontent.com/15131985/176946425-3dca2a6d-2ea7-42e7-b953-48ffe3bd445a.mp4
 
  
-There is another way to do this, mostly the same but instead of selecting the command parameter **ExecutePowershellScript** select **ExecuteScriptFile** and then on the next step you set the path to the **Create_Chapters.ps1** file.
+There is another way to do this, mostly the same but instead of selecting the command parameter **ExecutePowershellCode** select **ExecutePowershellFile** and then on the next step you set the path to the **Create_Chapters.ps1** file.
 
 ## Settings :
 Well, there is only one setting... The pre-filled chapter name format that you can change at the top of the file.
