@@ -15,8 +15,10 @@ A Powershell script to use inside [StaxRip](https://github.com/staxrip/staxrip) 
 
 
 ### Video shows it better :   
-[<img src="https://i.imgur.com/WcZuVef.gif" width="60%">](https://streamable.com/2pspp)
->(click the animated preview image to watch the video)
+https://user-images.githubusercontent.com/15131985/176942739-cd7471d7-2ce8-44f4-93d0-7de32e1b6c66.mp4
+
+
+
 
 There is another way to do this, mostly the same but instead of selecting the command parameter **ExecutePowershellScript** select **ExecuteScriptFile** and then on the next step you set the path to the **Gif_with_Gifski.ps1** file stored on your computer.
 
@@ -74,8 +76,10 @@ And... That' all, you're good to go now.
 Seems complicated when we read it but no worries it's not, see in video  :
 
 ## Usage Demo :
-[<img src="https://i.imgur.com/ASAPzUA.gif" width="60%">](https://streamable.com/d47u3)
->(click the animated preview image to watch the video)
+https://user-images.githubusercontent.com/15131985/176942788-7041b569-cb97-4c6a-a3ae-08901ceea1c3.mp4
+
+
+
 
 - And this is the result from this quick video example : 
 
