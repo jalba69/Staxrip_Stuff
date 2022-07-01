@@ -12,8 +12,8 @@ A simple Powershell script to create chapters from the preview window in [StaxRi
 - Below this click on the right side of the "Script Code" box, a little button will appear, click on it and in the edit window paste the content from the **Create_Chapters.ps1** file.
 
 ### Video shows it better :   
-[<img src="https://i.imgur.com/HbW04Fm.gif" width="60%">](https://streamable.com/0qt3o)
->(click the animated preview image to watch the video)
+https://user-images.githubusercontent.com/15131985/176946425-3dca2a6d-2ea7-42e7-b953-48ffe3bd445a.mp4
+
  
 There is another way to do this, mostly the same but instead of selecting the command parameter **ExecutePowershellScript** select **ExecuteScriptFile** and then on the next step you set the path to the **Create_Chapters.ps1** file.
 
