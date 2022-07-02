@@ -16,7 +16,6 @@ https://user-images.githubusercontent.com/15131985/176946425-3dca2a6d-2ea7-42e7-
 
  
 There is another way to do this, mostly the same but instead of selecting the command parameter **ExecutePowershellCode** select **ExecutePowershellFile** and then on the next step you set the path to the **Create_Chapters.ps1** file.
-Or just copy paste the .ps1 file into StaxRip scripts folder and call it from the scripts menu of StaxRip, as you wish, all those methods work the same in the end.
 
 ## Settings :
 Well, there is only one setting... The pre-filled chapter name format that you can change at the top of the file.
