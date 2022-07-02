@@ -20,7 +20,8 @@ https://user-images.githubusercontent.com/15131985/176942739-cd7471d7-2ce8-44f4-
 
 
 
-There is another way to do this, mostly the same but instead of selecting the command parameter **ExecutePowershellCode** select **ExecutePowershellFile** and then on the next step you set the path to the **Gif_with_Gifski.ps1** file stored on your computer.
+There is another way to do this, mostly the same but instead of selecting the command parameter **ExecutePowershellCode** select **ExecutePowershellFile** and then on the next step you set the path to the **Gif_with_Gifski.ps1** file stored on your computer. 
+Or just copy paste the .ps1 file into StaxRip scripts folder and call it from the scripts menu of StaxRip, as you wish all those methods work the same in the end.
 
 ## Settings :
 At the top of the **Gif_with_Gifski.ps1** there is a few things to set ( instructions are also in the script ) : 
