@@ -13,7 +13,6 @@ $Gifski_path = "Z:\My_Tools\gifski.exe"
 
 # Set the Path where you want to have the GiF created, this is if you always want it created in a same specific location.
 $Gif_Output_Folder = " " 
-
 # If this Output path for the GiF is not set or incorrect the GiF will be created inside the Temp folder used by StaRip.
 
 # Option to open the GiF destination folder once it is created, Options are True or False.
