@@ -76,14 +76,11 @@ And... That' all, you're good to go now.
 
 Seems complicated when we read it but no worries it's not, see in video  :
 
-## Usage Demo :
-https://user-images.githubusercontent.com/15131985/176942788-7041b569-cb97-4c6a-a3ae-08901ceea1c3.mp4
-
-
-
+## Use Demo :
+https://user-images.githubusercontent.com/15131985/177499994-362b02f8-560f-4c32-bb1f-e0af122f5972.mp4
 
 - And this is the result from this quick video example : 
 
-[<img src="https://i.imgur.com/UNDsjgz.gif" width="40%">](https://i.imgur.com/UNDsjgz.gif)
+![Anim_Fire - 8644_2022_07_06-09-34-52](https://user-images.githubusercontent.com/15131985/177496159-220ffb6a-7ee3-4b93-ab67-25dc2dd48c61.gif)
 
 Enjoy :)
