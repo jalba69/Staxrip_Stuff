@@ -1,18 +1,19 @@
 ##############################################################################################################
-#################################     Gif_with_Gifski.ps1     By Jalba69     #################################    
-#######################################     Version 2.0  July_2022     #######################################
+#################################     Gif_with_Gifski.ps1     By Jalba69     #################################
+#######################################     Version 2.1  July_2022     #######################################
 ##############################     https://github.com/jalba69/Staxrip_Stuff     ##############################
 ##############################################################################################################
 #                                                                                                            #
 # A Powershell script to use inside StaxRip to create high quality GiF's with Gifski.Only tested while using #
 # avisynth in Staxrip, really not sure if it will work with VapourSynth, not installed on my system...       #
-#                                                                                                            #   
+#                                                                                                            #
 ############################################## Settings ######################################################
 # Set the Path to where Gifski.exe is located on your computer : 
 $Gifski_path = "Z:\My_Tools\gifski.exe"
 
 # Set the Path where you want to have the GiF created, this is if you always want it created in a same specific location.
 $Gif_Output_Folder = " " 
+
 # If this Output path for the GiF is not set or incorrect the GiF will be created inside the Temp folder used by StaRip.
 
 # Option to open the GiF destination folder once it is created, Options are True or False.
@@ -89,6 +90,7 @@ If ( -Not (Test-Path -Path $Gif_Output_Folder) ) {
 $Gif_Output_Folder = $Project_Temp_Folder
 }
 
+#FPS Selector Function
 Function Select_FPS {
 $FPS_Input = [InputBox]::Show("Select the desired FPS for the GiF, 
 default is Current Project Target Framerate.", [math]::Round($activeProject.TargetFrameRate), "Select FPS :")  #[math]::Floor
@@ -107,43 +109,57 @@ return $FPS
 #Quality Selector Function
 Function Select_Quality {
 $Quality_Input = [InputBox]::Show("Select Quality of the GiF, Settings:
-
-1 to 100 Lower values may give smaller file but worse quality, 
-
-Fast  : 50% faster encoding, but 10% worse quality and larger file size
-
-Extra : 50% slower encoding, but 1% better quality ","100", "Select Quality :")
+`n1 to 100 Lower values may give smaller file but worse quality","100", "Select Quality :")
 if ([string]::IsNullOrEmpty($Quality_Input)) {exit}
-   #Check if Input is valid, needs to be in 1-100 range or be Fast
-if ($Quality_Input -notmatch "^[1-9][0-9]?$|^100$|fast|extra")
+   #Check if Input is valid, needs to be in 1-100 range
+if ($Quality_Input -notmatch "^[1-9][0-9]?$|^100$")
 {
 Check_Input
 Select_Quality
 }
-   #Set Quality Full Parameter
+#Set Quality Full Parameter
 else {$Quality= "--quality $Quality_Input"}
-if ($Quality_Input -eq "fast") {$Quality="--fast"}
-elseif ($Quality_Input -eq "extra") {$Quality="--extra"}
 return $Quality,$Quality_Input
+}
+
+Function Quality_Switch_1 {
+$Quality_Switch = new-object "TaskDialog[string]"
+$Quality_Switch.Title = "Quality Switch Choice : "
+$Quality_Switch.Content = ("Fast = 50% faster encoding, but 10% worse quality and larger file size
+`nNormal = Default 
+`nExtra  = 50% slower encoding, but 1% better quality" )
+$Quality_Switch.AddButton(" Cancel ", "x")
+$Quality_Switch.AddButton(" Fast ", "f")
+$Quality_Switch.AddButton(" Normal ", "d")
+$Quality_Switch.AddButton(" Extra ", "e")
+$Switch_result = $Quality_Switch.Show()
+$Quality_Switch.Dispose()
+if ($Switch_result -eq "x") {exit}
+elseif ($Switch_result -eq "f") {$Quality_Switch_choice="--fast"}
+elseif ($Switch_result -eq "e") {$Quality_Switch_choice="--extra"}
+elseif ($Switch_result -eq "d") {$Quality_Switch_choice=""}
+return $Quality_Switch_choice
 }
 
 #Loop Gif or not 
 Function Select_Loop {
 $Loop_Input = [InputBox]::Show("Select the number of times the animation is repeated :
-
--1 = no repetition
- 0 = Infinite Loop ( Default)
-xx = User Definied Repetitions ","0", "Repetition :")
+`n-1 = no repetition
+`n 0 = Infinite Loop ( Default)
+`nxx = User Definied Repetitions ","0", "Repetition :")
 if ([string]::IsNullOrEmpty($Loop_Input)) {exit}
-   #Check if Input is valid, needs to be in 1-100 range or be Fast
-if ($Loop_Input -notmatch "^[0-9]?$|-1")
+   #Check if Input is valid, needs to be in 1-100 range
+if ($Loop_Input -notmatch "^[1-9][0-9]?$|^|-1")
 {
 Check_Input
 Select_Loop
 }
    #Set Quality Full Parameter
 else {$Repetition= "--repeat $Loop_Input"}
-return $Repetition
+if ($Loop_Input -eq "-1") {$LoopInfos = "Loop : No Repetition" }
+elseif ($Loop_Input -eq "0") {$LoopInfos = "Loop : Infinite" }
+else {$LoopInfos = "Loop : $Loop_Input times" }
+return $Repetition,$LoopInfos
 }
 
   #Resize Y/N Function
@@ -163,14 +179,13 @@ $Width_Input = [InputBox]::Show("Select Width of the GiF,
 NO upscale can be done, if value set is higher than video input res. there will be no resize", $Target_Width, "Select Width :")
 if ([string]::IsNullOrEmpty($Width_Input)) {exit}	
 #Check if valid Input, needs to be in 4 to input width range, no upscale allowed.
-if ($Width_Input -notin 1..[int]$Target_Width)
-{
+if ($Width_Input -notin 1..[int]$Target_Width) {
 $error_popup = new-object -comobject wscript.shell
 $error_Input = $error_popup.popup("$Width_Input is not a valid value, 
 `nSet it again please 
 `nValid settings are from 4 to $Target_Width",0,"User Input is Incorrect",4096)
 User_Width_Input
-   }
+}
 return $Width_Input   
 }										 
     #Set Width Full Parameter
@@ -240,10 +255,10 @@ $Height = $Target_Height
 }
 else {$Height="$Resize_Height_Input"}
    #Estimate Size in bytes. bytes= width * height * frames / 3 * (quality + 1.5) / 2.5
-if ( $Quality_setting_Input -eq "fast" )
+if ( $Quality_Switch_Choice_Result -eq "--fast" )
 {$Estimated_Size = ((([int]$Width * [int]$Height * ([int]$framecount +1)) / 3) * 1.10)} # +10%
-elseif ( $Quality_setting_Input -eq "extra" )
-{$Estimated_Size = ((([int]$Width * [int]$Height * ([int]$framecount +1)) / 3) * 0.9)} # +10%
+elseif ( $Quality_Switch_Choice_Result -eq "--extra" )
+{$Estimated_Size = ((([int]$Width * [int]$Height * ([int]$framecount +1)) / 3) * 0.95)} # -9.5%
 else 
    #{$Estimated_Size = (((($Width * $Height * $framecount) / 3) * (($Quality_setting_Input / 100 ) + 1.5)) / 2.5)} + 1 frame added as it seems first frame is always missing
 {$Estimated_Size = (((([int]$Width * [int]$Height * ([int]$framecount +1)) / 3) * (([int]$Quality_setting_Input / 100 ) + 1.5)) / 2.5)}
@@ -260,22 +275,24 @@ $InfoFPS = $Fps_setting -replace "[^0-9]" , ''
 $InfoQuality = $Quality_setting_Main -replace "[^0-9]" , ''
 $GiFinfosPopup = new-object "TaskDialog[string]"
 $GiFinfosPopup.Title = "GiF Estimated Size and GiF Infos"
-$GiFinfosPopup.Content = ("The ( highly inaccurate ) estimated size of the GiF is :   $Estimated_Size $Display_Unit `n`n        GiF Infos :`n        $Width x $Height px `n        $InfoFPS FPS`n        $Framecount Frames`n        Gifski Quality Setting : $InfoQuality`n`n
+$GiFinfosPopup.Content = ("The ( highly inaccurate ) estimated size of the GiF is :   $Estimated_Size $Display_Unit `n`n        GiF Infos :`n        $Width x $Height px `n        $Framecount Frames`n        $InfoFPS FPS`n        $Loop_setting_info`n        Gifski Quality Setting : $InfoQuality  $Quality_Switch_Choice_Result`n`n
 Click Continue or Change Settings if you need to modify the GiF parameters" )
-$GiFinfosPopup.AddButton("Cancel", "x")
-$GiFinfosPopup.AddButton("Change Settings", "c")
-$GiFinfosPopup.AddButton("Continue", "")
+$GiFinfosPopup.AddButton(" Cancel ", "x")
+$GiFinfosPopup.AddButton(" Change Settings ", "c")
+$GiFinfosPopup.AddButton(" Create GiF ", "")
 $result = $GiFinfosPopup.Show()
 $GiFinfosPopup.Dispose()
 if ($result -eq "x") {exit}
 if ($result -eq "c") {
-	
    # Use $Script: so the variables returned by functions are updated, else it keeps old variables set previously.
 $script:Fps_setting = Select_FPS
 $script:quality_setting = Select_Quality
 $script:Quality_setting_Main = $quality_setting[0]
 $script:Quality_setting_Input = $quality_setting[1]
+$script:Quality_Switch_Choice_Result = Quality_Switch_1
 $script:Loop_setting = Select_Loop
+$script:Loop_setting_Main = $Loop_setting[0]
+$script:Loop_setting_info = $Loop_setting[1]
 $script:Resize_setting = Resize_Y_N
 $script:Resize_setting_Main = $Resize_setting[0]
 $script:Resize_Width_Input = $Resize_setting[1]
@@ -288,7 +305,10 @@ $Fps_setting = Select_FPS
 $Quality_setting = Select_Quality
 $Quality_setting_Main = $Quality_setting[0]
 $Quality_setting_Input = $Quality_setting[1]
+$Quality_Switch_Choice_Result = Quality_Switch_1
 $Loop_setting = Select_Loop
+$Loop_setting_Main = $Loop_setting[0]
+$Loop_setting_info = $Loop_setting[1]
 $Resize_setting = Resize_Y_N
 $Resize_setting_Main = $Resize_setting[0]
 $Resize_Width_Input = $Resize_setting[1]
@@ -400,6 +420,25 @@ $FFmpeg_bitmap.EndInit()
 $FFmpeg_bitmap.Freeze()
 $FFmpeg_Picture = [System.Drawing.bitmap][System.Drawing.Image]::FromStream($FFmpeg_bitmap.StreamSource)
 $FFmpeg_Icon = [System.Drawing.Icon]::FromHandle($FFmpeg_Picture.GetHicon())
+#Extract Frames to png's with FFmpeg
+   #Create "Gif_Frames" Folder in project temp directory.
+    #Creating new folder for extracted frames each time in case of trim options changed in Staxrip after 1ast GiF creation/try. 
+    #Could easily add a delete option but won't mess with deleting files on someone else computer, who knows what can happen with weird input names of videos...
+$Gif_Frames_Folder = ("Gif_Frames_" + $((get-date).ToString("hh_mm_ss")))
+New-Item -Path $Project_Temp_Folder -name $Gif_Frames_Folder -ItemType "directory"
+$Stored_Frames_Path = "`"$($Project_Temp_Folder + $Gif_Frames_Folder)\frame""*"".png`""
+   #Notifier Params
+$balloon = New-Object System.Windows.Forms.NotifyIcon 
+$balloon.Icon = $FFmpeg_Icon
+$balloon.BalloonTipText = "Extracting Frames..."
+$balloon.BalloonTipTitle = "FFmpeg" 
+$balloon.Visible = $true
+$balloon.ShowBalloonTip(9000)    
+   #FFmpeg process
+& "$FFmpeg_path" -i "`"$StaxRip_script_path`"" ("$Project_Temp_Folder" + "$Gif_Frames_Folder" + "\frame%04d.png")
+   #Notifier out
+$balloon.dispose()
+
 #Gifski Icon taken from here :
 $Gifski_icon_base64 = "AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAABMcEcATHBHAExwRwCaLrhMkzSTqpo5mduZOJbzkTpu/ps/
@@ -498,25 +537,6 @@ $Gifski_bitmap.EndInit()
 $Gifski_bitmap.Freeze()
 $Gifski_Picture = [System.Drawing.bitmap][System.Drawing.Image]::FromStream($Gifski_bitmap.StreamSource)
 $Gifski_Icon = [System.Drawing.Icon]::FromHandle($Gifski_Picture.GetHicon())
-
-#Extract Frames to png's with FFmpeg
-   #Create "Gif_Frames" Folder in project temp directory.
-    #Creating new folder for extracted frames each time in case of trim options changed in Staxrip after 1ast GiF creation/try. 
-    #Could easily add a delete option but won't mess with deleting files on someone else computer, who knows what can happen with weird input names of videos...	
-$Gif_Frames_Folder = ("Gif_Frames_" + $((get-date).ToString("hh_mm_ss")))
-New-Item -Path $Project_Temp_Folder -name $Gif_Frames_Folder -ItemType "directory"
-   #Notifier Params
-$balloon = New-Object System.Windows.Forms.NotifyIcon 
-$balloon.Icon = $FFmpeg_Icon
-$balloon.BalloonTipText = "Extracting Frames..."
-$balloon.BalloonTipTitle = "FFmpeg" 
-$balloon.Visible = $true
-$balloon.ShowBalloonTip(9000)    
-   #FFmpeg process
-& "$FFmpeg_path" -i "$StaxRip_script_path" ("$Project_Temp_Folder" + "$Gif_Frames_Folder" + "\frame%04d.png")
-   #Notifier out
-$balloon.dispose()
-
 #Create GiF with Gifski
    #Notifier Params
 $balloon = New-Object System.Windows.Forms.NotifyIcon 
@@ -527,8 +547,7 @@ $balloon.Visible = $true
 $balloon.ShowBalloonTip(9000) 
    #Gifski process
 $Output_Gif_Full = "`"$Gif_Output_Folder$File_output_name`""
-$Stored_Frames_Path = "`"$($Project_Temp_Folder + $Gif_Frames_Folder)\frame""*"".png`""
-Start-Process "$Gifski_path" "-o $Output_Gif_Full $Fps_setting $Quality_setting_Main $Loop_setting $Resize_setting_Main $Stored_Frames_Path" -WindowStyle Minimized
+Start-Process "$Gifski_path" "-o $Output_Gif_Full $Fps_setting $Quality_setting_Main $Quality_Switch_Choice_Result $Loop_setting_Main $Resize_setting_Main $Stored_Frames_Path" -WindowStyle Minimized
    #Wait for Gifski to end
 Wait-Process "Gifski"
    #Notifier out for gifski 
@@ -537,7 +556,7 @@ $balloon.dispose()
 $balloon = New-Object System.Windows.Forms.NotifyIcon 
 $Staxrip = (Get-Process -id $pid).Path
 $balloon.Icon  = [System.Drawing.Icon]::ExtractAssociatedIcon($Staxrip) 
-$balloon.BalloonTipText = "GiF Creation Done :)"
+$balloon.BalloonTipText = "GiF Done :)"
 $balloon.BalloonTipTitle = "StaxRip" 
 $balloon.Visible = $true
 $balloon.ShowBalloonTip(3000)
@@ -550,4 +569,3 @@ Sleep -m 3000
 $balloon.dispose()
 
 exit
-
