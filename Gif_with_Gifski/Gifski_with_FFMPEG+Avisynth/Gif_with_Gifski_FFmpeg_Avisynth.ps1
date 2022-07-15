@@ -9,8 +9,8 @@
 #                                                                                                            #
 ############################################## Settings ######################################################
 # Set the Path to where Gifski.exe is located on your computer : 
-#$Gifski_path = "Z:\My_Tools\gifski.exe"
-$Gifski_path = "Z:\My_Tools\gifski.exe"
+#Example : $Gifski_path = "Z:\My_Tools\gifski.exe"
+$Gifski_path = " "
 
 # Set the Path where you want to have the GiF created, this is if you always want it created in a same specific location.
 $Gif_Output_Folder = " " 
