@@ -3,6 +3,9 @@ A Powershell script to use inside [StaxRip](https://github.com/staxrip/staxrip) 
 
 * _Only tested while using avisynth inside Staxrip, really not sure if it will work with VapourSynth, not installed on my system, if it works let me know ;)_
 
+In case you managed to have a Gifski.exe version with **built in FFMPEG+Avisynth support** grab the script [here](https://github.com/jalba69/Staxrip_Stuff/tree/master/Gif_with_Gifski/Gifski_with_FFMPEG%2BAvisynth).  
+This version skips the step extracting the png's, it still offers this possibility as option, but by default you feed Gifski directly with the .avs input from Staxrip
+
 ## **Installation :**
 
 - Go to Tools > Edit Menu 
